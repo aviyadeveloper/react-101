@@ -1,15 +1,83 @@
-class RandomizerApp extends React.Component {
+interface IRandomizerAppProps {}
+interface IRandomizerAppState {
+  options: string[];
+}
+
+class RandomizerApp extends React.Component<
+  IRandomizerAppProps,
+  IRandomizerAppState
+> {
+  constructor(props: IRandomizerAppProps) {
+    super(props);
+    this.removeAllOptions = this.removeAllOptions.bind(this);
+    this.removeOption = this.removeOption.bind(this);
+    this.handleAddOption = this.handleAddOption.bind(this);
+    this.pickRandomOption = this.pickRandomOption.bind(this);
+    this.state = {
+      options: [
+        "Apples",
+        "Bananas",
+        "Oranges",
+        "Kiwis",
+        "Strawberries",
+        "Peaches"
+      ]
+    };
+  }
+
+  removeAllOptions(): void {
+    this.setState(() => {
+      return {
+        options: []
+      };
+    });
+  }
+
+  removeOption(event: any): void {
+    let option: string = event.target.value;
+    this.setState(prevState => {
+      return {
+        options: prevState.options.filter(o => o !== option)
+      };
+    });
+  }
+
+  handleAddOption(option: string): string {
+    if (!option) {
+      return "Option can't be empty";
+    } else if (this.state.options.indexOf(option) > -1) {
+      return "Option must be unique";
+    }
+
+    this.setState(prevState => {
+      return {
+        options: [...prevState.options, option]
+      };
+    });
+  }
+
+  pickRandomOption(event: React.MouseEvent): void {
+    let randNum: number = Math.floor(Math.random() * this.state.options.length);
+    alert(`Randomized picks: ${this.state.options[randNum]}`);
+  }
+
   render() {
     let headerTitle: string = "Randomizer!";
     let headerSubTitle: string = "A bit of random is fun";
-    let options = ["Apples", "Bananas", "Oranges", "Kiwis"];
 
     return (
       <div>
         <Header title={headerTitle} subtitle={headerSubTitle} />
-        <Action />
-        <Options options={options} />
-        <AddOption />
+        <Action
+          hasOptions={this.state.options.length > 0}
+          pickRandomOption={this.pickRandomOption}
+        />
+        <Options
+          options={this.state.options}
+          removeAllOptions={this.removeAllOptions}
+          removeOption={this.removeOption}
+        />
+        <AddOption handleAddOption={this.handleAddOption} />
       </div>
     );
   }
@@ -31,14 +99,21 @@ class Header extends React.Component<HeaderProps> {
   }
 }
 
-class Action extends React.Component {
-  randomize(): void {
-    alert("randomize!");
-  }
+type ActionProps = {
+  hasOptions: boolean;
+  pickRandomOption(event: React.MouseEvent): void;
+};
+
+class Action extends React.Component<ActionProps> {
   render() {
     return (
       <div>
-        <button onClick={this.randomize}>Randomize Now</button>
+        <button
+          disabled={!this.props.hasOptions}
+          onClick={this.props.pickRandomOption}
+        >
+          Randomize Now
+        </button>
       </div>
     );
   }
@@ -46,21 +121,26 @@ class Action extends React.Component {
 
 type OptionsProps = {
   options: string[];
+  removeAllOptions(): void;
+  removeOption(event: React.MouseEvent): void;
 };
 
 class Options extends React.Component<OptionsProps> {
-  removeAllOptions(): void {
-    alert("Remove all options");
-  }
   render() {
     let options: string[] = this.props.options;
     return (
       <div>
-        <button onClick={this.removeAllOptions}>Remove all options</button>
+        <button onClick={this.props.removeAllOptions}>
+          Remove all options
+        </button>
         <ul>
           <h3>Options:</h3>
           {options.map(o => (
-            <RandomizerOption key={o} option={o} />
+            <RandomizerOption
+              key={o}
+              option={o}
+              removeOption={this.props.removeOption}
+            />
           ))}
         </ul>
       </div>
@@ -70,46 +150,61 @@ class Options extends React.Component<OptionsProps> {
 
 type RandomizerOptionProps = {
   option: string;
+  removeOption(event: React.MouseEvent): void;
 };
 
 class RandomizerOption extends React.Component<RandomizerOptionProps> {
-  removeOption(): void {
-    alert("remove option");
-  }
   render() {
     return (
       <div>
         <li>
           {this.props.option}
-          <button onClick={this.removeOption}>remove</button>
+          <button onClick={this.props.removeOption} value={this.props.option}>
+            remove
+          </button>
         </li>
       </div>
     );
   }
 }
 
-class AddOption extends React.Component {
-  addOption(event: React.FormEvent): void {
+type AddOptionProps = {
+  handleAddOption(option: string): string;
+};
+type AddOptionState = {
+  error: string;
+};
+
+class AddOption extends React.Component<AddOptionProps, AddOptionState> {
+  constructor(props: AddOptionProps) {
+    super(props);
+    this.addOption = this.addOption.bind(this);
+    this.state = {
+      error: null
+    };
+  }
+
+  addOption(event: React.FormEvent) {
     event.preventDefault();
-    let inputElement: HTMLInputElement | null = event.currentTarget.querySelector(
+    let inputElement: HTMLInputElement = event.currentTarget.querySelector(
       "input[name='newOption']"
     );
-
-    let newOption: string | null =
-      inputElement && inputElement.value.trim() && inputElement.value.trim();
-
-    newOption ? alert(newOption) : alert("can't add empty option.");
+    let option: string = inputElement.value.trim();
+    let error = this.props.handleAddOption(option);
+    if (!error) {
+      inputElement.value = "";
+    }
+    this.setState(() => {
+      return { error };
+    });
   }
 
   render() {
     return (
       <div>
+        {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.addOption}>
-          <input
-            name="newOption"
-            placeholder="add a new option..."
-            ref="newOption"
-          />
+          <input name="newOption" placeholder="add a new option..." />
           <button type="submit">done</button>
         </form>
       </div>
@@ -117,4 +212,40 @@ class AddOption extends React.Component {
   }
 }
 
+// interface IVisibilityAppState {
+//   visibility: boolean;
+// }
+
+// interface IVisibilityAppProps {}
+
+// class VisibilityApp extends React.Component<
+//   IVisibilityAppProps,
+//   IVisibilityAppState
+// > {
+//   constructor(props: IVisibilityAppProps) {
+//     super(props);
+//     this.toggleVisibility = this.toggleVisibility.bind(this);
+//     this.state = {
+//       visibility: false
+//     };
+//   }
+
+//   toggleVisibility(): any {
+//     this.setState((prevState: IVisibilityAppState) => {
+//       return {
+//         visibility: !prevState.visibility
+//       };
+//     });
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <button onClick={this.toggleVisibility}>
+//           {this.state.visibility ? "hide" : "show"}
+//         </button>
+//         {this.state.visibility && <p>foobar</p>}
+//       </div>
+//     );
+//   }
+// }
 ReactDOM.render(<RandomizerApp />, document.getElementById("myApp"));
