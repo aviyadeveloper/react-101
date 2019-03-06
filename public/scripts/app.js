@@ -131,6 +131,7 @@ var AddOption = /** @class */ (function (_super) {
     __extends(AddOption, _super);
     function AddOption(props) {
         var _this = _super.call(this, props) || this;
+        _this.newOptionRef = React.createRef();
         _this.addOption = _this.addOption.bind(_this);
         _this.state = {
             error: undefined
@@ -139,12 +140,12 @@ var AddOption = /** @class */ (function (_super) {
     }
     AddOption.prototype.addOption = function (event) {
         event.preventDefault();
-        var inputElement = event.currentTarget.querySelector("input[name='newOption']");
-        if (inputElement) {
-            var option = inputElement.value.trim();
+        if (this.newOptionRef.current) {
+            this.newOptionRef;
+            var option = this.newOptionRef.current.value.trim();
             var error_1 = this.props.handleAddOption(option);
             if (!error_1) {
-                inputElement.value = "";
+                this.newOptionRef.current.value = "";
             }
             else {
                 this.setState(function () {
@@ -157,7 +158,7 @@ var AddOption = /** @class */ (function (_super) {
         return (React.createElement("div", null,
             this.state.error && React.createElement("p", null, this.state.error),
             React.createElement("form", { onSubmit: this.addOption },
-                React.createElement("input", { name: "newOption", placeholder: "add a new option..." }),
+                React.createElement("input", { name: "newOption", placeholder: "add a new option...", ref: this.newOptionRef }),
                 React.createElement("button", { type: "submit" }, "done"))));
     };
     return AddOption;

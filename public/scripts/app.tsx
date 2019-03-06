@@ -184,16 +184,16 @@ class AddOption extends React.Component<AddOptionProps, AddOptionState> {
     };
   }
 
+  newOptionRef = React.createRef<HTMLInputElement>();
+
   addOption(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    let inputElement: HTMLInputElement | null = event.currentTarget.querySelector(
-      "input[name='newOption']"
-    );
-    if (inputElement) {
-      let option: string = inputElement.value.trim();
+    if (this.newOptionRef.current) {
+      this.newOptionRef;
+      let option: string = this.newOptionRef.current.value.trim();
       let error = this.props.handleAddOption(option);
       if (!error) {
-        inputElement.value = "";
+        this.newOptionRef.current.value = "";
       } else {
         this.setState(() => {
           return { error: error };
@@ -207,7 +207,11 @@ class AddOption extends React.Component<AddOptionProps, AddOptionState> {
       <div>
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.addOption}>
-          <input name="newOption" placeholder="add a new option..." />
+          <input
+            name="newOption"
+            placeholder="add a new option..."
+            ref={this.newOptionRef}
+          />
           <button type="submit">done</button>
         </form>
       </div>
