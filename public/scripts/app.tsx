@@ -42,7 +42,7 @@ class RandomizerApp extends React.Component<
     });
   }
 
-  handleAddOption(option: string): string {
+  handleAddOption(option: string): string | undefined {
     if (!option) {
       return "Option can't be empty";
     } else if (this.state.options.indexOf(option) > -1) {
@@ -169,10 +169,10 @@ class RandomizerOption extends React.Component<RandomizerOptionProps> {
 }
 
 type AddOptionProps = {
-  handleAddOption(option: string): string;
+  handleAddOption(option: string): string | undefined;
 };
 type AddOptionState = {
-  error: string;
+  error: string | undefined;
 };
 
 class AddOption extends React.Component<AddOptionProps, AddOptionState> {
@@ -180,23 +180,26 @@ class AddOption extends React.Component<AddOptionProps, AddOptionState> {
     super(props);
     this.addOption = this.addOption.bind(this);
     this.state = {
-      error: null
+      error: undefined
     };
   }
 
-  addOption(event: React.FormEvent) {
+  addOption(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    let inputElement: HTMLInputElement = event.currentTarget.querySelector(
+    let inputElement: HTMLInputElement | null = event.currentTarget.querySelector(
       "input[name='newOption']"
     );
-    let option: string = inputElement.value.trim();
-    let error = this.props.handleAddOption(option);
-    if (!error) {
-      inputElement.value = "";
+    if (inputElement) {
+      let option: string = inputElement.value.trim();
+      let error = this.props.handleAddOption(option);
+      if (!error) {
+        inputElement.value = "";
+      } else {
+        this.setState(() => {
+          return { error: error };
+        });
+      }
     }
-    this.setState(() => {
-      return { error };
-    });
   }
 
   render() {

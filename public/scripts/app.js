@@ -133,21 +133,25 @@ var AddOption = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.addOption = _this.addOption.bind(_this);
         _this.state = {
-            error: null
+            error: undefined
         };
         return _this;
     }
     AddOption.prototype.addOption = function (event) {
         event.preventDefault();
         var inputElement = event.currentTarget.querySelector("input[name='newOption']");
-        var option = inputElement.value.trim();
-        var error = this.props.handleAddOption(option);
-        if (!error) {
-            inputElement.value = "";
+        if (inputElement) {
+            var option = inputElement.value.trim();
+            var error_1 = this.props.handleAddOption(option);
+            if (!error_1) {
+                inputElement.value = "";
+            }
+            else {
+                this.setState(function () {
+                    return { error: error_1 };
+                });
+            }
         }
-        this.setState(function () {
-            return { error: error };
-        });
     };
     AddOption.prototype.render = function () {
         return (React.createElement("div", null,
