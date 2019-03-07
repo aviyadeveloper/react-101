@@ -5,19 +5,17 @@ type OptionProps = {
   removeOption(option: string): void;
 };
 
-export const Option = (props: OptionProps) => {
-  return (
-    <div>
-      <li>
-        {props.option}
-        <button
-          onClick={e => {
-            props.removeOption(props.option);
-          }}
-        >
-          remove
-        </button>
-      </li>
-    </div>
-  );
-};
+export const Option = (props: OptionProps) => (
+  <div>
+    <li>
+      {props.option}
+      <button
+        onClick={e => {
+          props.removeOption(props.option);
+        }}
+      >
+        remove
+      </button>
+    </li>
+  </div>
+);

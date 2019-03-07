@@ -19,7 +19,9 @@
   "dependencies": {
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
+    "@types/react-modal": "^3.8.1",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-modal": "^3.8.1"
   }
 }

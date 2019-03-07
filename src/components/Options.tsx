@@ -7,16 +7,14 @@ type OptionsProps = {
   removeOption(option: string): void;
 };
 
-export const Options = (props: OptionsProps) => {
-  return (
-    <div>
-      <button onClick={props.removeAllOptions}>Remove all options</button>
-      <ul>
-        <h3>Options go here:</h3>
-        {props.options.map(o => (
-          <Option key={o} option={o} removeOption={props.removeOption} />
-        ))}
-      </ul>
-    </div>
-  );
-};
+export const Options = (props: OptionsProps) => (
+  <div>
+    <button onClick={props.removeAllOptions}>Remove all options</button>
+    <ul>
+      <h3>Options go here:</h3>
+      {props.options.map(o => (
+        <Option key={o} option={o} removeOption={props.removeOption} />
+      ))}
+    </ul>
+  </div>
+);

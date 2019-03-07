@@ -4,10 +4,16 @@ import { Header } from "./Header";
 import { Action } from "./Action";
 import { Options } from "./Options";
 import { AddOption } from "./AddOption";
+import { OptionModal } from "./OptionModal";
 
-interface IRandomizerAppProps {}
+interface IRandomizerAppProps {
+  // removeAllOptions(): void;
+  // removeOption(option: string): void;
+  // handleAddOption(option: string): void;
+}
 interface IRandomizerAppState {
   options: string[];
+  selectedOption: string;
 }
 
 export class RandomizerApp extends React.Component<
@@ -15,7 +21,8 @@ export class RandomizerApp extends React.Component<
   IRandomizerAppState
 > {
   state: IRandomizerAppState = {
-    options: []
+    options: [],
+    selectedOption: ""
   };
 
   removeAllOptions = (): void => {
@@ -40,7 +47,11 @@ export class RandomizerApp extends React.Component<
 
   pickRandomOption = (event: React.MouseEvent): void => {
     let randNum: number = Math.floor(Math.random() * this.state.options.length);
-    alert(`Randomized picks: ${this.state.options[randNum]}`);
+    this.setState(() => ({ selectedOption: this.state.options[randNum] }));
+  };
+
+  resetSelectedOption = (): void => {
+    this.setState(() => ({ selectedOption: "" }));
   };
 
   componentDidMount() {
@@ -78,6 +89,10 @@ export class RandomizerApp extends React.Component<
           removeOption={this.removeOption}
         />
         <AddOption handleAddOption={this.handleAddOption} />
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          resetSelectedOption={this.resetSelectedOption}
+        />
       </div>
     );
   }
