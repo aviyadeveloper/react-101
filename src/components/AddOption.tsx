@@ -3,34 +3,31 @@ import React from "react";
 type AddOptionProps = {
   handleAddOption(option: string): string | undefined;
 };
+
 type AddOptionState = {
   error: string | undefined;
 };
 
 export class AddOption extends React.Component<AddOptionProps, AddOptionState> {
-  constructor(props: AddOptionProps) {
-    super(props);
-    this.addOption = this.addOption.bind(this);
-    this.state = {
-      error: undefined
-    };
-  }
+  state: AddOptionState = {
+    error: undefined
+  };
 
   newOptionRef = React.createRef<HTMLInputElement>();
 
-  addOption(event: React.FormEvent<HTMLFormElement>) {
+  addOption = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (this.newOptionRef.current) {
       this.newOptionRef;
       let option: string = this.newOptionRef.current.value.trim();
       let error = this.props.handleAddOption(option);
+
+      this.setState(() => ({ error }));
       if (!error) {
         this.newOptionRef.current.value = "";
-      } else {
-        this.setState(() => ({ error: error }));
       }
     }
-  }
+  };
 
   render() {
     return (

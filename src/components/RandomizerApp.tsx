@@ -14,16 +14,34 @@ export class RandomizerApp extends React.Component<
   IRandomizerAppProps,
   IRandomizerAppState
 > {
-  constructor(props: IRandomizerAppProps) {
-    super(props);
-    this.removeAllOptions = this.removeAllOptions.bind(this);
-    this.removeOption = this.removeOption.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.pickRandomOption = this.pickRandomOption.bind(this);
-    this.state = {
-      options: []
-    };
-  }
+  state: IRandomizerAppState = {
+    options: []
+  };
+
+  removeAllOptions = (): void => {
+    this.setState(() => ({ options: [] }));
+  };
+
+  removeOption = (option: string): void => {
+    this.setState(prevState => ({
+      options: prevState.options.filter(o => o !== option)
+    }));
+  };
+
+  handleAddOption = (option: string): string | undefined => {
+    if (!option) {
+      return "Option can't be empty";
+    } else if (this.state.options.indexOf(option) > -1) {
+      return "Option must be unique";
+    }
+
+    this.setState(prevState => ({ options: [...prevState.options, option] }));
+  };
+
+  pickRandomOption = (event: React.MouseEvent): void => {
+    let randNum: number = Math.floor(Math.random() * this.state.options.length);
+    alert(`Randomized picks: ${this.state.options[randNum]}`);
+  };
 
   componentDidMount() {
     try {
@@ -41,31 +59,6 @@ export class RandomizerApp extends React.Component<
   ) {
     prevState.options.length !== this.state.options.length &&
       localStorage.setItem("options", JSON.stringify(this.state.options));
-  }
-
-  removeAllOptions(): void {
-    this.setState(() => ({ options: [] }));
-  }
-
-  removeOption(option: string): void {
-    this.setState(prevState => ({
-      options: prevState.options.filter(o => o !== option)
-    }));
-  }
-
-  handleAddOption(option: string): string | undefined {
-    if (!option) {
-      return "Option can't be empty";
-    } else if (this.state.options.indexOf(option) > -1) {
-      return "Option must be unique";
-    }
-
-    this.setState(prevState => ({ options: [...prevState.options, option] }));
-  }
-
-  pickRandomOption(event: React.MouseEvent): void {
-    let randNum: number = Math.floor(Math.random() * this.state.options.length);
-    alert(`Randomized picks: ${this.state.options[randNum]}`);
   }
 
   render() {

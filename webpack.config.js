@@ -12,5 +12,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".json", ".ts", ".tsx"]
+  },
+  devtool: "cheap-module-eval-source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "public")
   }
 };
