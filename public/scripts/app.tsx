@@ -31,11 +31,9 @@ class RandomizerApp extends React.Component<
 
   removeOption(event: any): void {
     let option: string = event.target.value;
-    this.setState(prevState => {
-      return {
-        options: prevState.options.filter(o => o !== option)
-      };
-    });
+    this.setState(prevState => ({
+      options: prevState.options.filter(o => o !== option)
+    }));
   }
 
   handleAddOption(option: string): string | undefined {
@@ -45,11 +43,7 @@ class RandomizerApp extends React.Component<
       return "Option must be unique";
     }
 
-    this.setState(prevState => {
-      return {
-        options: [...prevState.options, option]
-      };
-    });
+    this.setState(prevState => ({ options: [...prevState.options, option] }));
   }
 
   pickRandomOption(event: React.MouseEvent): void {

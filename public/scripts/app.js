@@ -37,11 +37,9 @@ var RandomizerApp = /** @class */ (function (_super) {
     };
     RandomizerApp.prototype.removeOption = function (event) {
         var option = event.target.value;
-        this.setState(function (prevState) {
-            return {
-                options: prevState.options.filter(function (o) { return o !== option; })
-            };
-        });
+        this.setState(function (prevState) { return ({
+            options: prevState.options.filter(function (o) { return o !== option; })
+        }); });
     };
     RandomizerApp.prototype.handleAddOption = function (option) {
         if (!option) {
@@ -50,11 +48,7 @@ var RandomizerApp = /** @class */ (function (_super) {
         else if (this.state.options.indexOf(option) > -1) {
             return "Option must be unique";
         }
-        this.setState(function (prevState) {
-            return {
-                options: prevState.options.concat([option])
-            };
-        });
+        this.setState(function (prevState) { return ({ options: prevState.options.concat([option]) }); });
     };
     RandomizerApp.prototype.pickRandomOption = function (event) {
         var randNum = Math.floor(Math.random() * this.state.options.length);
