@@ -88,36 +88,29 @@ type HeaderProps = {
   subtitle: string;
 };
 
-class Header extends React.Component<HeaderProps> {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subtitle}</h2>
-      </div>
-    );
-  }
-}
+const Header = (props: HeaderProps) => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+    </div>
+  );
+};
 
 type ActionProps = {
   hasOptions: boolean;
   pickRandomOption(event: React.MouseEvent): void;
 };
 
-class Action extends React.Component<ActionProps> {
-  render() {
-    return (
-      <div>
-        <button
-          disabled={!this.props.hasOptions}
-          onClick={this.props.pickRandomOption}
-        >
-          Randomize Now
-        </button>
-      </div>
-    );
-  }
-}
+const Action = (props: ActionProps) => {
+  return (
+    <div>
+      <button disabled={!props.hasOptions} onClick={props.pickRandomOption}>
+        Randomize Now
+      </button>
+    </div>
+  );
+};
 
 type OptionsProps = {
   options: string[];
@@ -125,48 +118,41 @@ type OptionsProps = {
   removeOption(event: React.MouseEvent): void;
 };
 
-class Options extends React.Component<OptionsProps> {
-  render() {
-    let options: string[] = this.props.options;
-    return (
-      <div>
-        <button onClick={this.props.removeAllOptions}>
-          Remove all options
-        </button>
-        <ul>
-          <h3>Options:</h3>
-          {options.map(o => (
-            <RandomizerOption
-              key={o}
-              option={o}
-              removeOption={this.props.removeOption}
-            />
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+const Options = (props: OptionsProps) => {
+  return (
+    <div>
+      <button onClick={props.removeAllOptions}>Remove all options</button>
+      <ul>
+        <h3>Options:</h3>
+        {props.options.map(o => (
+          <RandomizerOption
+            key={o}
+            option={o}
+            removeOption={props.removeOption}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 type RandomizerOptionProps = {
   option: string;
   removeOption(event: React.MouseEvent): void;
 };
 
-class RandomizerOption extends React.Component<RandomizerOptionProps> {
-  render() {
-    return (
-      <div>
-        <li>
-          {this.props.option}
-          <button onClick={this.props.removeOption} value={this.props.option}>
-            remove
-          </button>
-        </li>
-      </div>
-    );
-  }
-}
+const RandomizerOption = (props: RandomizerOptionProps) => {
+  return (
+    <div>
+      <li>
+        {props.option}
+        <button onClick={props.removeOption} value={props.option}>
+          remove
+        </button>
+      </li>
+    </div>
+  );
+};
 
 type AddOptionProps = {
   handleAddOption(option: string): string | undefined;
@@ -219,40 +205,4 @@ class AddOption extends React.Component<AddOptionProps, AddOptionState> {
   }
 }
 
-// interface IVisibilityAppState {
-//   visibility: boolean;
-// }
-
-// interface IVisibilityAppProps {}
-
-// class VisibilityApp extends React.Component<
-//   IVisibilityAppProps,
-//   IVisibilityAppState
-// > {
-//   constructor(props: IVisibilityAppProps) {
-//     super(props);
-//     this.toggleVisibility = this.toggleVisibility.bind(this);
-//     this.state = {
-//       visibility: false
-//     };
-//   }
-
-//   toggleVisibility(): any {
-//     this.setState((prevState: IVisibilityAppState) => {
-//       return {
-//         visibility: !prevState.visibility
-//       };
-//     });
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <button onClick={this.toggleVisibility}>
-//           {this.state.visibility ? "hide" : "show"}
-//         </button>
-//         {this.state.visibility && <p>foobar</p>}
-//       </div>
-//     );
-//   }
-// }
 ReactDOM.render(<RandomizerApp />, document.getElementById("myApp"));

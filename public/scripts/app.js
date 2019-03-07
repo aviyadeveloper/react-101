@@ -75,58 +75,28 @@ var RandomizerApp = /** @class */ (function (_super) {
     };
     return RandomizerApp;
 }(React.Component));
-var Header = /** @class */ (function (_super) {
-    __extends(Header, _super);
-    function Header() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Header.prototype.render = function () {
-        return (React.createElement("div", null,
-            React.createElement("h1", null, this.props.title),
-            React.createElement("h2", null, this.props.subtitle)));
-    };
-    return Header;
-}(React.Component));
-var Action = /** @class */ (function (_super) {
-    __extends(Action, _super);
-    function Action() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Action.prototype.render = function () {
-        return (React.createElement("div", null,
-            React.createElement("button", { disabled: !this.props.hasOptions, onClick: this.props.pickRandomOption }, "Randomize Now")));
-    };
-    return Action;
-}(React.Component));
-var Options = /** @class */ (function (_super) {
-    __extends(Options, _super);
-    function Options() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Options.prototype.render = function () {
-        var _this = this;
-        var options = this.props.options;
-        return (React.createElement("div", null,
-            React.createElement("button", { onClick: this.props.removeAllOptions }, "Remove all options"),
-            React.createElement("ul", null,
-                React.createElement("h3", null, "Options:"),
-                options.map(function (o) { return (React.createElement(RandomizerOption, { key: o, option: o, removeOption: _this.props.removeOption })); }))));
-    };
-    return Options;
-}(React.Component));
-var RandomizerOption = /** @class */ (function (_super) {
-    __extends(RandomizerOption, _super);
-    function RandomizerOption() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    RandomizerOption.prototype.render = function () {
-        return (React.createElement("div", null,
-            React.createElement("li", null,
-                this.props.option,
-                React.createElement("button", { onClick: this.props.removeOption, value: this.props.option }, "remove"))));
-    };
-    return RandomizerOption;
-}(React.Component));
+var Header = function (props) {
+    return (React.createElement("div", null,
+        React.createElement("h1", null, props.title),
+        React.createElement("h2", null, props.subtitle)));
+};
+var Action = function (props) {
+    return (React.createElement("div", null,
+        React.createElement("button", { disabled: !props.hasOptions, onClick: props.pickRandomOption }, "Randomize Now")));
+};
+var Options = function (props) {
+    return (React.createElement("div", null,
+        React.createElement("button", { onClick: props.removeAllOptions }, "Remove all options"),
+        React.createElement("ul", null,
+            React.createElement("h3", null, "Options:"),
+            props.options.map(function (o) { return (React.createElement(RandomizerOption, { key: o, option: o, removeOption: props.removeOption })); }))));
+};
+var RandomizerOption = function (props) {
+    return (React.createElement("div", null,
+        React.createElement("li", null,
+            props.option,
+            React.createElement("button", { onClick: props.removeOption, value: props.option }, "remove"))));
+};
 var AddOption = /** @class */ (function (_super) {
     __extends(AddOption, _super);
     function AddOption(props) {
@@ -163,38 +133,5 @@ var AddOption = /** @class */ (function (_super) {
     };
     return AddOption;
 }(React.Component));
-// interface IVisibilityAppState {
-//   visibility: boolean;
-// }
-// interface IVisibilityAppProps {}
-// class VisibilityApp extends React.Component<
-//   IVisibilityAppProps,
-//   IVisibilityAppState
-// > {
-//   constructor(props: IVisibilityAppProps) {
-//     super(props);
-//     this.toggleVisibility = this.toggleVisibility.bind(this);
-//     this.state = {
-//       visibility: false
-//     };
-//   }
-//   toggleVisibility(): any {
-//     this.setState((prevState: IVisibilityAppState) => {
-//       return {
-//         visibility: !prevState.visibility
-//       };
-//     });
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <button onClick={this.toggleVisibility}>
-//           {this.state.visibility ? "hide" : "show"}
-//         </button>
-//         {this.state.visibility && <p>foobar</p>}
-//       </div>
-//     );
-//   }
-// }
 ReactDOM.render(React.createElement(RandomizerApp, null), document.getElementById("myApp"));
 //# sourceMappingURL=app.js.map
