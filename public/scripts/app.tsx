@@ -14,15 +14,26 @@ class RandomizerApp extends React.Component<
     this.handleAddOption = this.handleAddOption.bind(this);
     this.pickRandomOption = this.pickRandomOption.bind(this);
     this.state = {
-      options: [
-        "Apples",
-        "Bananas",
-        "Oranges",
-        "Kiwis",
-        "Strawberries",
-        "Peaches"
-      ]
+      options: []
     };
+  }
+
+  componentDidMount() {
+    try {
+      let optionsJSON = localStorage.getItem("options");
+      if (optionsJSON) {
+        const options: string[] = JSON.parse(optionsJSON);
+        this.setState(() => ({ options }));
+      }
+    } catch (e) {}
+  }
+
+  componentDidUpdate(
+    prevProps: IRandomizerAppProps,
+    prevState: IRandomizerAppState
+  ) {
+    prevState.options.length !== this.state.options.length &&
+      localStorage.setItem("options", JSON.stringify(this.state.options));
   }
 
   removeAllOptions(): void {

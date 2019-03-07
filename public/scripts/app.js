@@ -21,17 +21,24 @@ var RandomizerApp = /** @class */ (function (_super) {
         _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.pickRandomOption = _this.pickRandomOption.bind(_this);
         _this.state = {
-            options: [
-                "Apples",
-                "Bananas",
-                "Oranges",
-                "Kiwis",
-                "Strawberries",
-                "Peaches"
-            ]
+            options: []
         };
         return _this;
     }
+    RandomizerApp.prototype.componentDidMount = function () {
+        try {
+            var optionsJSON = localStorage.getItem("options");
+            if (optionsJSON) {
+                var options_1 = JSON.parse(optionsJSON);
+                this.setState(function () { return ({ options: options_1 }); });
+            }
+        }
+        catch (e) { }
+    };
+    RandomizerApp.prototype.componentDidUpdate = function (prevProps, prevState) {
+        prevState.options.length !== this.state.options.length &&
+            localStorage.setItem("options", JSON.stringify(this.state.options));
+    };
     RandomizerApp.prototype.removeAllOptions = function () {
         this.setState(function () { return ({ options: [] }); });
     };
