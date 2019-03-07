@@ -29,8 +29,7 @@ class RandomizerApp extends React.Component<
     this.setState(() => ({ options: [] }));
   }
 
-  removeOption(event: any): void {
-    let option: string = event.target.value;
+  removeOption(option: string): void {
     this.setState(prevState => ({
       options: prevState.options.filter(o => o !== option)
     }));
@@ -105,7 +104,7 @@ const Action = (props: ActionProps) => {
 type OptionsProps = {
   options: string[];
   removeAllOptions(): void;
-  removeOption(event: React.MouseEvent): void;
+  removeOption(option: string): void;
 };
 
 const Options = (props: OptionsProps) => {
@@ -128,7 +127,7 @@ const Options = (props: OptionsProps) => {
 
 type RandomizerOptionProps = {
   option: string;
-  removeOption(event: React.MouseEvent): void;
+  removeOption(option: string): void;
 };
 
 const RandomizerOption = (props: RandomizerOptionProps) => {
@@ -136,7 +135,11 @@ const RandomizerOption = (props: RandomizerOptionProps) => {
     <div>
       <li>
         {props.option}
-        <button onClick={props.removeOption} value={props.option}>
+        <button
+          onClick={e => {
+            props.removeOption(props.option);
+          }}
+        >
           remove
         </button>
       </li>

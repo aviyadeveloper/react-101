@@ -35,8 +35,7 @@ var RandomizerApp = /** @class */ (function (_super) {
     RandomizerApp.prototype.removeAllOptions = function () {
         this.setState(function () { return ({ options: [] }); });
     };
-    RandomizerApp.prototype.removeOption = function (event) {
-        var option = event.target.value;
+    RandomizerApp.prototype.removeOption = function (option) {
         this.setState(function (prevState) { return ({
             options: prevState.options.filter(function (o) { return o !== option; })
         }); });
@@ -85,7 +84,9 @@ var RandomizerOption = function (props) {
     return (React.createElement("div", null,
         React.createElement("li", null,
             props.option,
-            React.createElement("button", { onClick: props.removeOption, value: props.option }, "remove"))));
+            React.createElement("button", { onClick: function (e) {
+                    props.removeOption(props.option);
+                } }, "remove"))));
 };
 var AddOption = /** @class */ (function (_super) {
     __extends(AddOption, _super);
