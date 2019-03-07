@@ -9,5 +9,8 @@ module.exports = {
   },
   module: {
     rules: [{ test: /\.tsx?$/, use: "ts-loader" }]
+  },
+  resolve: {
+    extensions: [".js", ".json", ".ts", ".tsx"]
   }
 };
