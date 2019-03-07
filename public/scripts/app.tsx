@@ -26,11 +26,7 @@ class RandomizerApp extends React.Component<
   }
 
   removeAllOptions(): void {
-    this.setState(() => {
-      return {
-        options: []
-      };
-    });
+    this.setState(() => ({ options: [] }));
   }
 
   removeOption(event: any): void {
@@ -181,9 +177,7 @@ class AddOption extends React.Component<AddOptionProps, AddOptionState> {
       if (!error) {
         this.newOptionRef.current.value = "";
       } else {
-        this.setState(() => {
-          return { error: error };
-        });
+        this.setState(() => ({ error: error }));
       }
     }
   }

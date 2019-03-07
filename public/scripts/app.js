@@ -33,11 +33,7 @@ var RandomizerApp = /** @class */ (function (_super) {
         return _this;
     }
     RandomizerApp.prototype.removeAllOptions = function () {
-        this.setState(function () {
-            return {
-                options: []
-            };
-        });
+        this.setState(function () { return ({ options: [] }); });
     };
     RandomizerApp.prototype.removeOption = function (event) {
         var option = event.target.value;
@@ -118,9 +114,7 @@ var AddOption = /** @class */ (function (_super) {
                 this.newOptionRef.current.value = "";
             }
             else {
-                this.setState(function () {
-                    return { error: error_1 };
-                });
+                this.setState(function () { return ({ error: error_1 }); });
             }
         }
     };
