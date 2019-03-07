@@ -1,3 +1,4 @@
 node_modules
 deprecated
 *.map
+*.log
