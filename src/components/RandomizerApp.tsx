@@ -79,20 +79,22 @@ export class RandomizerApp extends React.Component<
     return (
       <div>
         <Header title={headerTitle} subtitle={headerSubTitle} />
-        <Action
-          hasOptions={this.state.options.length > 0}
-          pickRandomOption={this.pickRandomOption}
-        />
-        <Options
-          options={this.state.options}
-          removeAllOptions={this.removeAllOptions}
-          removeOption={this.removeOption}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
-        <OptionModal
-          selectedOption={this.state.selectedOption}
-          resetSelectedOption={this.resetSelectedOption}
-        />
+        <div className="container">
+          <Action
+            hasOptions={this.state.options.length > 0}
+            pickRandomOption={this.pickRandomOption}
+          />
+          <Options
+            options={this.state.options}
+            removeAllOptions={this.removeAllOptions}
+            removeOption={this.removeOption}
+          />
+          <AddOption handleAddOption={this.handleAddOption} />
+          <OptionModal
+            selectedOption={this.state.selectedOption}
+            resetSelectedOption={this.resetSelectedOption}
+          />
+        </div>
       </div>
     );
   }
