@@ -8,10 +8,13 @@ import { OptionModal } from "./OptionModal";
 import { Widget } from "./Widget";
 
 interface IRandomizerAppProps {
-  // removeAllOptions(): void;
-  // removeOption(option: string): void;
-  // handleAddOption(option: string): void;
+  removeAllOptions(): void;
+  removeOption(option: string): void;
+  handleAddOption(option: string): void;
+  pickRandomOption(event: React.MouseEvent): void;
+  resetSelectedOption(): void;
 }
+
 interface IRandomizerAppState {
   options: string[];
   selectedOption: string;

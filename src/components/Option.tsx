@@ -1,11 +1,11 @@
 import React from "react";
 
-type OptionProps = {
+interface IOptionProps {
   option: string;
   removeOption(option: string): void;
-};
+}
 
-export const Option = (props: OptionProps) => (
+export const Option = (props: IOptionProps) => (
   <div>
     <li className="options__option">
       <span className="options__option__text">{props.option}</span>

@@ -1,11 +1,11 @@
 import React from "react";
 
-type ActionProps = {
+interface IActionProps {
   hasOptions: boolean;
   pickRandomOption(event: React.MouseEvent): void;
-};
+}
 
-export const Action = (props: ActionProps) => (
+export const Action = (props: IActionProps) => (
   <div>
     <button
       className="big-button"

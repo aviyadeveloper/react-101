@@ -1,11 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
 
-type OptionModalProps = {
+interface IOptionModalProps {
   selectedOption: string;
   resetSelectedOption(): void;
-};
-export const OptionModal = (props: OptionModalProps) => (
+}
+
+export const OptionModal = (props: IOptionModalProps) => (
   <Modal
     isOpen={!!props.selectedOption}
     // onAfterOpen={props.afterOpenModal}

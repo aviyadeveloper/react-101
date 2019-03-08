@@ -1,13 +1,13 @@
 import React from "react";
 import { Option } from "./Option";
 
-type OptionsProps = {
+interface IOptionsProps {
   options: string[];
   removeAllOptions(): void;
   removeOption(option: string): void;
-};
+}
 
-export const Options = (props: OptionsProps) => (
+export const Options = (props: IOptionsProps) => (
   <div>
     <ul className="options">
       {props.options.map(o => (

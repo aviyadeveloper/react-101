@@ -1,11 +1,11 @@
 import React from "react";
 
-interface HeaderProps {
+interface IHeaderProps {
   title: string;
   subtitle: string;
 }
 
-export const Header = (props: HeaderProps) => (
+export const Header = (props: IHeaderProps) => (
   <div className="header">
     <h1 className="header__title">
       RANDOM<span className="header__bright-primary">CRACY</span>

@@ -1,15 +1,17 @@
 import React from "react";
 
-type AddOptionProps = {
+interface IAddOptionProps {
   handleAddOption(option: string): string | undefined;
-};
+}
 
-type AddOptionState = {
+interface IAddOptionState {
   error: string | undefined;
-};
-
-export class AddOption extends React.Component<AddOptionProps, AddOptionState> {
-  state: AddOptionState = {
+}
+export class AddOption extends React.Component<
+  IAddOptionProps,
+  IAddOptionState
+> {
+  state: IAddOptionState = {
     error: undefined
   };
 
