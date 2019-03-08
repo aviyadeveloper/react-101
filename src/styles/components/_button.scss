@@ -12,7 +12,7 @@
   text-transform: uppercase;
   width: 100%;
   transition-duration: $speed-fast;
-  margin-bottom: $space-m;
+  margin-bottom: $space-s;
 }
 
 .big-button:hover:enabled {
@@ -24,6 +24,7 @@
 .big-button:active:enabled {
   transform: translateY($space-xs/2);
   border-bottom: $space-xs/2 solid $color-primary-20;
+  margin-bottom: $space-m + $space-xs / 2;
   transition-duration: $speed-fast;
 }
 
@@ -64,9 +65,19 @@
 }
 
 .button__add-option {
-  padding: $space-m;
-  margin: $space-m;
+  padding: $space-xs;
+  margin: 0;
   border: none;
   border-bottom: $space-xs/2 solid;
   border-color: $color-primary-20;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .big-button {
+    margin-bottom: $space-m;
+  }
+  .button__add-option {
+    padding: $space-m;
+    margin: $space-m;
+  }
 }

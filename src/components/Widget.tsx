@@ -14,7 +14,7 @@ export const Widget = (props: WidgetProps) => (
     <div className="widget__header">
       <h3 className="widget__header__title">Canditates:</h3>
       <button className="button button--link" onClick={props.removeAllOptions}>
-        Reset Canditates
+        Reset Candidates
       </button>
     </div>
     <Options

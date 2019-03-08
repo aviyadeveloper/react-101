@@ -8,18 +8,28 @@
 
 .header__title {
   color: $color-primary-10;
-  font-size: 7.2rem;
+  font-size: $space-xxxl;
   font-weight: bold;
   margin: 0;
 }
 
 .header__subtitle {
   color: $color-secondary-00;
-  font-size: $space-l;
+  font-size: $space-m;
   font-weight: 400;
   margin: 0;
 }
 
 .header__bright-primary {
   color: $color-primary-05;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .header__title {
+    font-size: 7.2rem;
+  }
+
+  .header__subtitle {
+    font-size: $space-l;
+  }
 }

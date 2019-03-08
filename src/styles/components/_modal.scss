@@ -21,7 +21,7 @@
   text-align: center;
   background-color: $color-secondary-20;
   font-size: $space-m;
-  max-width: 40rem;
+  max-width: 35rem;
   outline: none;
   padding: $space-m;
 }
@@ -41,5 +41,5 @@
   font-size: $space_xxxl;
   color: $color-special-10;
   text-shadow: 4px 4px 2px $color-primary-20;
-  word-break: break-all;
+  word-break: normal;
 }

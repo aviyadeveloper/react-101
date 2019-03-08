@@ -1,4 +1,12 @@
 .container {
+  margin: 0 auto;
   max-width: 60rem;
-  margin: $space-m auto;
+  padding: $space-s;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .container {
+    margin: $space-m auto;
+    padding: 0;
+  }
 }
