@@ -1,5 +1,7 @@
-$primaryColor: orangered;
+@import "./base/base";
+@import "./base/colors";
+@import "./components/header";
 
 * {
-  color: $primaryColor;
+  color: $color-primary-10;
 }

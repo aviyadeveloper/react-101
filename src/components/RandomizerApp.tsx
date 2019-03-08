@@ -73,8 +73,8 @@ export class RandomizerApp extends React.Component<
   }
 
   render() {
-    let headerTitle: string = "Randomizer!";
-    let headerSubTitle: string = "A bit of random is fun";
+    let headerTitle: string = "RANDOCRACY";
+    let headerSubTitle: string = "Works better than 21st century democracy!";
 
     return (
       <div>
