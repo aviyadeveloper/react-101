@@ -32,15 +32,16 @@
 }
 
 // Button
+
 .button {
   background-color: $color-primary-10;
   color: white;
   font-size: $space-m;
   border: none;
-  padding: $space-xs;
   font-family: Teko;
   transition-duration: $speed-fast;
-  margin-bottom: $space-m;
+  padding: $space-s;
+  min-width: 20%;
 }
 
 .button:hover {
@@ -50,11 +51,11 @@
 
 .button--link {
   background-color: unset;
-  color: $color-special-10;
+  color: $color-special-15;
 }
 .button--link:hover {
   cursor: pointer;
   background-color: unset;
-
   color: $color-special-00;
+  text-shadow: 1px 1px 2px black;
 }

@@ -7,10 +7,10 @@ type OptionProps = {
 
 export const Option = (props: OptionProps) => (
   <div>
-    <li>
-      {props.option}
+    <li className="widget-option">
+      <span className="widget-option-text">{props.option}</span>
       <button
-        className="button button--link"
+        className="button button--link button--right"
         onClick={e => {
           props.removeOption(props.option);
         }}
