@@ -43,6 +43,10 @@
   margin: $space-s;
 }
 
+.button--padded {
+  padding: $space-s;
+}
+
 .button:hover {
   background-color: $color-primary-00;
   cursor: pointer;

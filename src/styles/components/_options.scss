@@ -1,19 +1,20 @@
 .options {
   list-style: none;
-  padding-left: 0;
   margin: 0;
+  padding-left: 0;
   width: 100%;
 }
 
 .options__option {
+  border-bottom: 1px solid $color-secondary-10;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $color-secondary-10;
 }
 .options__option__text {
   color: white;
-  margin: $space-s;
   font-size: $space-m;
   font-weight: 500;
+  margin: $space-s;
   text-transform: capitalize;
+  word-break: break-all;
 }

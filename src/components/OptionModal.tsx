@@ -9,13 +9,20 @@ export const OptionModal = (props: OptionModalProps) => (
   <Modal
     isOpen={!!props.selectedOption}
     // onAfterOpen={props.afterOpenModal}
+    closeTimeoutMS={200}
     onRequestClose={props.resetSelectedOption}
+    className="modal"
     // style={customStyles}
     contentLabel="Selected Option"
   >
-    <h4>Randomizer! picked:</h4>
-    {!!props.selectedOption && <h6>{props.selectedOption}</h6>}
-    <button className="button" onClick={props.resetSelectedOption}>
+    <h4 className="modal__title">The President Elect Is:</h4>
+    {!!props.selectedOption && (
+      <p className="modal__result">{props.selectedOption}</p>
+    )}
+    <button
+      className="button button--padded"
+      onClick={props.resetSelectedOption}
+    >
       OK! When's the next flight to Mars?
     </button>
   </Modal>
