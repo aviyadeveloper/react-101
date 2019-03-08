@@ -9,7 +9,9 @@ type OptionsProps = {
 
 export const Options = (props: OptionsProps) => (
   <div>
-    <button onClick={props.removeAllOptions}>Remove all options</button>
+    <button className="button button--link" onClick={props.removeAllOptions}>
+      Remove all options
+    </button>
     <ul>
       <h3>Options go here:</h3>
       {props.options.map(o => (

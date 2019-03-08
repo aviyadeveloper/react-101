@@ -39,7 +39,9 @@ export class AddOption extends React.Component<AddOptionProps, AddOptionState> {
             placeholder="add a new option..."
             ref={this.newOptionRef}
           />
-          <button type="submit">done</button>
+          <button className="button" type="submit">
+            Add
+          </button>
         </form>
       </div>
     );

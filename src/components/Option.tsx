@@ -10,6 +10,7 @@ export const Option = (props: OptionProps) => (
     <li>
       {props.option}
       <button
+        className="button button--link"
         onClick={e => {
           props.removeOption(props.option);
         }}

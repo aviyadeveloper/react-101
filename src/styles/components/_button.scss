@@ -1,0 +1,60 @@
+// Big Button
+
+.big-button {
+  background-color: $color-primary-10;
+  color: white;
+  font-size: $space-xl;
+  border: none;
+  border-bottom: $space-xs solid;
+  border-color: $color-primary-20;
+  padding: $space-s;
+  font-family: Teko;
+  text-transform: uppercase;
+  width: 100%;
+  transition-duration: $speed-fast;
+  margin-bottom: $space-m;
+}
+
+.big-button:hover:enabled {
+  cursor: pointer;
+  background-color: $color-primary-05;
+  transition-duration: $speed-fast;
+}
+
+.big-button:active:enabled {
+  transform: translateY($space-xs/2);
+  border-bottom: $space-xs/2 solid $color-primary-20;
+  transition-duration: $speed-fast;
+}
+
+.big-button:disabled {
+  opacity: 0.5;
+}
+
+// Button
+.button {
+  background-color: $color-primary-10;
+  color: white;
+  font-size: $space-m;
+  border: none;
+  padding: $space-xs;
+  font-family: Teko;
+  transition-duration: $speed-fast;
+  margin-bottom: $space-m;
+}
+
+.button:hover {
+  background-color: $color-primary-00;
+  cursor: pointer;
+}
+
+.button--link {
+  background-color: unset;
+  color: $color-special-10;
+}
+.button--link:hover {
+  cursor: pointer;
+  background-color: unset;
+
+  color: $color-special-00;
+}

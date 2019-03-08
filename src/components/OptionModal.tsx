@@ -15,6 +15,8 @@ export const OptionModal = (props: OptionModalProps) => (
   >
     <h4>Randomizer! picked:</h4>
     {!!props.selectedOption && <h6>{props.selectedOption}</h6>}
-    <button onClick={props.resetSelectedOption}>Great!</button>
+    <button className="button" onClick={props.resetSelectedOption}>
+      OK! When's the next flight to Mars?
+    </button>
   </Modal>
 );

@@ -7,8 +7,12 @@ type ActionProps = {
 
 export const Action = (props: ActionProps) => (
   <div>
-    <button disabled={!props.hasOptions} onClick={props.pickRandomOption}>
-      Randomize Now
+    <button
+      className="big-button"
+      disabled={!props.hasOptions}
+      onClick={props.pickRandomOption}
+    >
+      Elect President
     </button>
   </div>
 );

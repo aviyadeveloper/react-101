@@ -1,13 +1,11 @@
-// Spacing */
-/********* */
+// Durations */
+/*********** */
 
-$space-xxs: 0.4rem;
-$space-xs: 0.8rem;
-$space-s: 1.6rem;
-$space-m: 2.4rem;
-$space-l: 3.2rem;
-$space-xl: 4rem;
-$space-xxl: 4.8rem;
+$speed-slow: 200ms;
+$speed-medium: 100ms;
+$speed-fast: 50ms;
+
+/* **************************************** */
 
 // Colors */
 /******** */
@@ -48,3 +46,16 @@ $color-special-05: #fff24c;
 // Special darks */
 $color-special-15: #f8e500;
 $color-special-20: #b4a704;
+
+/* **************************************** */
+
+// Spacing */
+/********* */
+
+$space-xxs: 0.4rem;
+$space-xs: 0.8rem;
+$space-s: 1.6rem;
+$space-m: 2.4rem;
+$space-l: 3.2rem;
+$space-xl: 4rem;
+$space-xxl: 4.8rem;
