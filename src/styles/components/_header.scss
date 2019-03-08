@@ -1,8 +1,6 @@
-@import "../base/colors";
-
 .header {
   font-family: Teko;
-  padding: 1.6rem 0;
+  padding: $space-s 0;
   background-color: $color-secondary-20;
   text-align: center;
   text-shadow: 1px 1px 1px $color-black;
@@ -17,7 +15,7 @@
 
 .header__subtitle {
   color: $color-secondary-00;
-  font-size: 2.8rem;
+  font-size: $space-m;
   font-weight: 400;
   margin: 0;
 }
