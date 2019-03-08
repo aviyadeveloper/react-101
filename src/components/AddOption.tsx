@@ -32,16 +32,18 @@ export class AddOption extends React.Component<AddOptionProps, AddOptionState> {
   render() {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form className="widget-form" onSubmit={this.addOption}>
+        {this.state.error && (
+          <p className="add-option__error">{this.state.error}</p>
+        )}
+        <form className="add-option" onSubmit={this.addOption}>
           <input
-            className="widget-input"
+            className="add-option__input"
             autoComplete="off"
             name="newOption"
             placeholder="add a new option..."
             ref={this.newOptionRef}
           />
-          <button className="button" type="submit">
+          <button className="button button__add-option" type="submit">
             Add
           </button>
         </form>

@@ -1,0 +1,25 @@
+.add-option {
+  display: flex;
+  background-color: $color-secondary-15;
+}
+
+.add-option__input {
+  flex-grow: 1;
+  border-radius: 0;
+  border: 0;
+  background-color: $color-special-00;
+  color: $color-secondary-15;
+  font-size: $space-m;
+  font-weight: 500;
+  padding: $space-s;
+  margin: $space-m;
+  border-bottom: $space-xs/2 solid;
+  border-color: $color-secondary-20;
+}
+
+.add-option__error {
+  color: $color-primary-00;
+  font-style: italic;
+  font-size: $space-s;
+  margin: $space-s;
+}

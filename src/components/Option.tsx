@@ -7,8 +7,8 @@ type OptionProps = {
 
 export const Option = (props: OptionProps) => (
   <div>
-    <li className="widget-option">
-      <span className="widget-option-text">{props.option}</span>
+    <li className="options__option">
+      <span className="options__option__text">{props.option}</span>
       <button
         className="button button--link button--right"
         onClick={e => {

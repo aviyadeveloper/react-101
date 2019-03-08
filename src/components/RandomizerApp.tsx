@@ -5,6 +5,7 @@ import { Action } from "./Action";
 import { Options } from "./Options";
 import { AddOption } from "./AddOption";
 import { OptionModal } from "./OptionModal";
+import { Widget } from "./Widget";
 
 interface IRandomizerAppProps {
   // removeAllOptions(): void;
@@ -21,7 +22,12 @@ export class RandomizerApp extends React.Component<
   IRandomizerAppState
 > {
   state: IRandomizerAppState = {
-    options: [],
+    options: [
+      "donald trump",
+      "kanye west",
+      "oprah winfrey",
+      "sponge bob square pants"
+    ],
     selectedOption: ""
   };
 
@@ -37,9 +43,9 @@ export class RandomizerApp extends React.Component<
 
   handleAddOption = (option: string): string | undefined => {
     if (!option) {
-      return "Option can't be empty";
+      return "Sorry the consitution says the president must have a valid alpha-numeric name";
     } else if (this.state.options.indexOf(option) > -1) {
-      return "Option must be unique";
+      return "Are you trying to rig the election with duplicate canditate entries?";
     }
 
     this.setState(prevState => ({ options: [...prevState.options, option] }));
@@ -59,7 +65,9 @@ export class RandomizerApp extends React.Component<
       let optionsJSON = localStorage.getItem("options");
       if (optionsJSON) {
         const options: string[] = JSON.parse(optionsJSON);
-        this.setState(() => ({ options }));
+        if (options.length) {
+          this.setState(() => ({ options }));
+        }
       }
     } catch (e) {}
   }
@@ -84,14 +92,12 @@ export class RandomizerApp extends React.Component<
             hasOptions={this.state.options.length > 0}
             pickRandomOption={this.pickRandomOption}
           />
-          <div className="widget">
-            <Options
-              options={this.state.options}
-              removeAllOptions={this.removeAllOptions}
-              removeOption={this.removeOption}
-            />
-            <AddOption handleAddOption={this.handleAddOption} />
-          </div>
+          <Widget
+            options={this.state.options}
+            removeAllOptions={this.removeAllOptions}
+            removeOption={this.removeOption}
+            handleAddOption={this.handleAddOption}
+          />
           <OptionModal
             selectedOption={this.state.selectedOption}
             resetSelectedOption={this.resetSelectedOption}

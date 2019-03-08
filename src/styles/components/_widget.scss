@@ -1,6 +1,10 @@
+// Widget-Container
+.widget {
+  box-shadow: 4px 4px 4px -2px black;
+  background-color: $color-secondary-15;
+}
 // Widget Header
-
-.widget-header {
+.widget__header {
   max-width: 100%;
   background-color: $color-secondary-20;
   display: flex;
@@ -8,46 +12,8 @@
 }
 
 // Widget Title
-
-.widget-title {
+.widget__header__title {
   color: white;
   font-size: $space-m;
   margin: $space-s;
-}
-
-.widget-options {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  width: 100%;
-  background-color: $color-secondary-15;
-}
-.widget-option {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid $color-secondary-10;
-}
-.widget-option-text {
-  color: white;
-  margin: $space-s;
-  font-size: $space-m;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-
-.widget-form {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 4px solid $color-secondary-20;
-}
-
-.widget-input {
-  border-radius: 0;
-  border: 0;
-  background-color: $color-special-00;
-  color: $color-secondary-15;
-  width: 100%;
-  font-size: $space-m;
-  font-weight: 500;
-  padding: $space-m;
 }

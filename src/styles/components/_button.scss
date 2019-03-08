@@ -40,8 +40,7 @@
   border: none;
   font-family: Teko;
   transition-duration: $speed-fast;
-  padding: $space-s;
-  min-width: 20%;
+  margin: $space-s;
 }
 
 .button:hover {
@@ -58,4 +57,12 @@
   background-color: unset;
   color: $color-special-00;
   text-shadow: 1px 1px 2px black;
+}
+
+.button__add-option {
+  padding: $space-m;
+  margin: $space-m;
+  border: none;
+  border-bottom: $space-xs/2 solid;
+  border-color: $color-primary-20;
 }
