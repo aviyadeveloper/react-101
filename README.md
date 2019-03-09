@@ -1,7 +1,10 @@
 # RANDOMCRACY
 
-The UI allows for different options to be added to a list from which a random selection is made.
+The UI allows for different options to be added to a list. When a "choose" button is clicked random selection is made.
+
 It was built in order to learn and practice the technologies it is built upon.
+
+Added a bit of satire for fun.
 
 # Tech
 
